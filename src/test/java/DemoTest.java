@@ -2,16 +2,17 @@ import Steps.GooglePageSteps;
 import io.qameta.allure.AllureId;
 import io.qameta.allure.Description;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 
-import java.io.IOException;
 
-
-public class DemoTest {
+public class DemoTest extends BaseTest {
     @Test
     @AllureId("1")
     @Description("Go to Google page")
-    public void goToGooglePage() throws IOException {
+    public void goToGooglePage(){
         GooglePageSteps googlePageSteps = new GooglePageSteps();
+
         googlePageSteps.goToGooglePage();
     }
 }

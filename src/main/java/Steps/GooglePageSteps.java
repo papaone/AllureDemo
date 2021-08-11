@@ -3,15 +3,12 @@ package Steps;
 import Pages.GooglePage;
 import io.qameta.allure.Step;
 
-import java.io.IOException;
-
-public class GooglePageSteps extends BaseStep{
+public class GooglePageSteps {
 
     GooglePage googlePage = new GooglePage();
 
     @Step("Go to Google page")
-    public void goToGooglePage() throws IOException {
+    public void goToGooglePage() {
         googlePage.goToGooglePage();
-        screenshot();
     }
 }
