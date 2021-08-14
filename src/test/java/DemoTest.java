@@ -13,8 +13,7 @@ public class DemoTest extends BaseTest {
     public void goToGooglePage(){
         GooglePageSteps googlePageSteps = new GooglePageSteps();
 
-        googlePageSteps
-                .goToGooglePage()
-                .errorStep();
+        googlePageSteps.goToGooglePage();
+        googlePageSteps.errorStep();
     }
 }

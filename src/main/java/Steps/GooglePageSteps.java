@@ -8,14 +8,12 @@ public class GooglePageSteps {
     GooglePage googlePage = new GooglePage();
 
     @Step("Go to Google page")
-    public GooglePageSteps goToGooglePage() {
+    public void goToGooglePage() {
         googlePage.goToGooglePage();
-        return this;
     }
 
     @Step("Error step")
-    public GooglePageSteps errorStep() {
+    public void errorStep() {
         googlePage.clickError();
-        return this;
     }
 }
