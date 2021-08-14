@@ -11,7 +11,6 @@ pipeline {
     parameters {
         string(name: 'GIT_URL', defaultValue: 'https://github.com/papaone/AllureDemo.git', description: 'The target git url')
         string(name: 'GIT_BRANCH', defaultValue: 'master', description: 'The target git branch')
-        choice(name: 'BROWSER_VERSION', choices: ['86.0', '85.0', '78.0'], description: 'Pick the target browser version in Selenoid')
     }
 
     stages {
@@ -26,7 +25,7 @@ pipeline {
 //         }
         stage('Run maven clean test') {
             steps {
-                sh 'mvn clean test -Dbrowser_name=$BROWSER_NAME -Dbrowser_version=$BROWSER_VERSION'
+                sh 'mvn clean test '
             }
         }
         stage('Backup and Reports') {
