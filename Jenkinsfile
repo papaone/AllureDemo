@@ -34,12 +34,10 @@ pipeline {
             }
             post {
                 always {
-                  script {
-                    if (currentBuild.currentResult == 'SUCCESS') {
-                    step([$class: 'Mailer', notifyEveryUnstableBuild: true, recipients: "jenkinstest471@gmail.com", sendToIndividuals: true])
-                    } else {
-                    step([$class: 'Mailer', notifyEveryUnstableBuild: true, recipients: "jenkinstest471@gmail.com", sendToIndividuals: true])
-                    }
+                         mail to: 'jenkinstest471@gmail.com',
+                         subject: "Status of pipeline: ${currentBuild.fullDisplayName}",
+                         body: "${env.BUILD_URL} has result ${currentBuild.result}"
+                      }
 
                     // Формирование отчета
                     allure([
