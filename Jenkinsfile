@@ -16,7 +16,7 @@ pipeline {
     stages {
         stage('Pull from GitHub') {
             steps {
-                slackSend(message: "Build ${env.BUILD_NUMBER} start, ${git.url}, ${git.branch}")
+                slackSend(message: "Build ${env.BUILD_NUMBER} start")
                 git ([
                     url: "${params.GIT_URL}",
                     branch: "${params.GIT_BRANCH}"
