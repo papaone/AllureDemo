@@ -14,6 +14,6 @@ public class DemoTest extends BaseTest {
         GooglePageSteps googlePageSteps = new GooglePageSteps();
 
         googlePageSteps.goToGooglePage();
-        googlePageSteps.errorStep();
+//        googlePageSteps.errorStep();
     }
 }
