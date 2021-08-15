@@ -16,7 +16,7 @@ pipeline {
     stages {
         stage('Pull from GitHub') {
             steps {
-                slackSend(message: "Notification from Jenkins Pipeline")
+                slackSend(message: "Build ${env.BUILD_NUMBER} start")
                 git ([
                     url: "${params.GIT_URL}",
                     branch: "${params.GIT_BRANCH}"
@@ -65,7 +65,7 @@ pipeline {
 
                     def colorCode = '#FF0000'
                     		    def slackMessage = "${currentBuild.currentResult}: Job '${env.JOB_NAME}', Build ${env.BUILD_NUMBER}. \nTotal = ${summary.totalCount}, Failures = ${summary.failCount}, Skipped = ${summary.skipCount}, Passed = ${summary.passCount} \nMore info at: ${env.BUILD_URL}"
-                    
+
                    slackSend(color: colorCode, message: slackMessage)
                   }
                 }
