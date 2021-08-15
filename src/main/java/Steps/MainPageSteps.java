@@ -25,4 +25,9 @@ public class MainPageSteps {
     public void checkPhoneIsDisplayed() {
         mainPage.isPhoneDisplayed();
     }
+
+    @Step("Go to otus.ru")
+    public void goToMainPage() {
+        mainPage.goToMainPage();
+    }
 }
