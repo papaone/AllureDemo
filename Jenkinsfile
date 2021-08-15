@@ -14,15 +14,15 @@ pipeline {
     }
 
     stages {
-//         stage('Pull from GitHub') {
-//             steps {
-//                 slackSend(message: "Notification from Jenkins Pipeline")
-//                 git ([
-//                     url: "${params.GIT_URL}",
-//                     branch: "${params.GIT_BRANCH}"
-//                     ])
-//             }
-//         }
+        stage('Pull from GitHub') {
+            steps {
+                slackSend(message: "Notification from Jenkins Pipeline")
+                git ([
+                    url: "${params.GIT_URL}",
+                    branch: "${params.GIT_BRANCH}"
+                    ])
+            }
+        }
         stage('Run maven clean test') {
             steps {
                 bat 'mvn clean test '
