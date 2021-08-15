@@ -1,17 +1,14 @@
 pipeline {
     agent any
     tools {
-        maven 'maven'
-    }
+        maven 'maven'}
 
     triggers {
-        githubPush()
-    }
+        githubPush()}
 
     parameters {
         string(name: 'GIT_URL', defaultValue: 'https://github.com/papaone/AllureDemo.git', description: 'The target git url')
-        string(name: 'GIT_BRANCH', defaultValue: 'master', description: 'The target git branch')
-    }
+        string(name: 'GIT_BRANCH', defaultValue: 'master', description: 'The target git branch')}
 
     stages {
         stage('Pull from GitHub') {
@@ -20,9 +17,8 @@ pipeline {
                 git ([
                     url: "${params.GIT_URL}",
                     branch: "${params.GIT_BRANCH}"
-                    ])
-            }
-        }
+                    ])}}
+
         stage('Run maven clean test') {
             steps {
                 bat 'mvn clean test '
@@ -34,10 +30,10 @@ pipeline {
             }
             post {
                 always {
-                         mail to: 'jenkinstest471@gmail.com',
-                         subject: "Status of pipeline: ${currentBuild.fullDisplayName}",
-                         body: "${env.BUILD_URL} has result ${currentBuild.result}"
-                      }
+                      mail to: 'jenkinstest471@gmail.com',
+                      subject: "Status of pipeline: ${currentBuild.fullDisplayName}",
+                      body: "${env.BUILD_URL} has result ${currentBuild.result}"
+                      println('mail sent')
 
                     // Формирование отчета
                     allure([
@@ -65,6 +61,7 @@ pipeline {
                     		    def slackMessage = "${currentBuild.currentResult}: Job '${env.JOB_NAME}', Build ${env.BUILD_NUMBER}. \nTotal = ${summary.totalCount}, Failures = ${summary.failCount}, Skipped = ${summary.skipCount}, Passed = ${summary.passCount} \nMore info at: ${env.BUILD_URL}"
 
                    slackSend(color: colorCode, message: slackMessage)
+                    }
                   }
                 }
             }
