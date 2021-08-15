@@ -82,8 +82,7 @@ pipeline {
 
 		    slackSend(color: colorCode, message: slackMessage)
 		    }
-                  }
-                }
+
             }
         }
     }
